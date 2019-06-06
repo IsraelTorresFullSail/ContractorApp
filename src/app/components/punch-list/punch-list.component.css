@@ -1,0 +1,30 @@
+table {
+  width: 100%;
+}
+
+.header-app {
+  text-align: center;
+}
+
+.walk-form {
+  margin: auto;
+  width: 60%;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-icon {
+  cursor: pointer;
+}
+
+.btn-add {
+  padding: 0.5rem;
+  width: 25%;
+}
+
+h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+}

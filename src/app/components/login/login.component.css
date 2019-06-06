@@ -1,0 +1,33 @@
+section {
+  padding: 80px 0 400px 0;
+  width: 400px;
+  margin: auto;
+}
+.mat-card {
+  margin: auto;
+  padding: 26px;
+}
+.mat-card-title {
+  text-align: center;
+}
+.mat-card-content, .mat-card-subtitle {
+  font-size: 14px;
+}
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding-bottom: 0.50em;
+}
+form {
+  display: block;
+  width: 100%;
+}
+.btn-areYouNew {
+  place-content: stretch center;
+  align-items: stretch; 
+  flex-direction: row; 
+  box-sizing: border-box; 
+  display: flex; 
+  margin-top: 20px;
+}
+.space-top .mat-raised-button .mat-primary {
+  margin-top: 20px;
+}

@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="header-app">
+      <h4>Walkthrough Form</h4>
+  </div>
+  <div class="walk-form">
+    <form [formGroup]="this.walkForm" (ngSubmit)="onSubmit()">
+      <div class="form">
+      <h4>Customer Information</h4>
+      <table cellspacing="0">
+          <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput #firstName maxlength="50" placeholder="First Name" formControlName="firstName">
+                </mat-form-field>
+              </td>
+              <td>
+                  <mat-form-field>
+                    <input matInput #lastName maxlength="50" placeholder="Last Name" formControlName="lastName">
+                  </mat-form-field>
+              </td>
+          </tr>
+      </table>
+      <table cellspacing="0">
+          <tr>
+              <td>
+                <mat-form-field>
+                  <textarea matInput #address maxlength="200" placeholder="Address" formControlName="address"></textarea>
+                </mat-form-field>
+              </td>
+            </tr>
+      </table>
+      <table cellspacing="0">
+          <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput #city maxlength="50" placeholder="City" formControlName="city">
+                </mat-form-field>
+              </td>
+              <td>
+                  <mat-form-field>
+                    <input matInput #state maxlength="50" placeholder="State" formControlName="state">
+                  </mat-form-field>
+              </td>
+              <td>
+                  <mat-form-field>
+                    <input matInput #postalCode maxlength="5" placeholder="Postal Code" formControlName="postalCode">
+                    <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                  </mat-form-field>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                <mat-form-field>
+                  <input matInput #permitNumber maxlength="15" placeholder="Permit Number" formControlName="permitNumber">
+                </mat-form-field>
+              </td>
+          </tr>
+      </table>
+      </div>
+      <mat-card class="card-task">
+          <mat-card-title>
+            <h4>Tasks List</h4>
+          </mat-card-title>
+          <mat-card-content formArrayName="taskItems">
+              <div class="task-desc" cellspacing="0" *ngFor="let taskItem of walkForm.get('taskItems').controls; let i=index">
+                <div [formGroupName]="i">
+                    <mat-form-field class="td-op-num">
+                      <input matInput #openingNumber type="number" maxlength="3" placeholder="Opening Number" formControlName="openingNumber">
+                    </mat-form-field>
+                    <mat-form-field>
+                      <textarea matInput #taskDescription maxlength="200" placeholder="Task Description" formControlName="taskDescription"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+            <button class="btn-center" mat-raised-button color="accent" (click)="addTask()">
+              Add Task
+          </button>
+          </mat-card-content>
+      </mat-card>
+      <table cellspacing="0">
+          <tr>
+              <td>
+                <button mat-raised-button color="primary" class="btn-submit">Submit</button>
+              </td>
+            </tr>
+      </table>
+    </form>
+  </div>
+</div>
+
+
+

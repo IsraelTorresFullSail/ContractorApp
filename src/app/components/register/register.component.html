@@ -1,0 +1,127 @@
+
+<section id="login" class="mb-5 mt-5">
+    <mat-card>
+      <mat-card-title>Register</mat-card-title>
+      <mat-card-content>
+          <form [formGroup]="formRegister" (ngSubmit)="onAddUser()">
+              <div fxlayout="column" fxlayoutalign="center" style="flex-direction: column; box-sizing: border-box; display: flex; place-content: stretch center; align-items: stretch;">
+              <mat-form-field>
+                <div class="mat-form-field-wrapper">
+                  <div class="mat-form-field-flex">
+                    <div class="mat-form-field-infix">
+                        <input matInput #name type="name" name="name" maxlength="50" formControlName="name" placeholder="Name">
+                        <span class="mat-form-field-label-wrapper">
+                            <label class="mat-form-field-label  mat-empty mat-form-field-empty" id="mat-form-field-label-1" for="mat-input-0" aria-owns="mat-input-0">
+                              <!---->
+                              <!---->
+                              <mat-label>Name</mat-label>
+                              <!---->
+                              <!---->
+                              <span aria-hidden="true" class="mat-placeholder-required mat-form-field-required-marker">&nbsp;*</span>
+                            </label>
+                        </span>
+                    </div>
+                    <div class="mat-form-field-suffix">
+                     <mat-icon class="mat-icon notranslate mat-primary material-icons" matsuffix="" role="img" aria-hidden="true">person</mat-icon>
+                    </div>
+                  </div>
+                </div>
+                <!---->
+                <div *ngIf="formRegister.controls['name'].invalid && (formRegister.controls['name'].dirty || formRegister.controls['name'].touched)" class="mat-form-field-subscript-wrapper">
+                  <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
+                    <mat-error class="mat-error ng-star-inserted" *ngIf="formRegister.controls['name'].errors.required">First Name is required</mat-error>
+                   </div>
+                </div>
+                <!---->
+              </mat-form-field>
+              <mat-form-field>
+                <div class="mat-form-field-wrapper">
+                  <div class="mat-form-field-flex">
+                    <div class="mat-form-field-infix">
+                        <input matInput #email type="email" name="email" formControlName="email" placeholder="E-mail">
+                        <span class="mat-form-field-label-wrapper">
+                            <label class="mat-form-field-label  mat-empty mat-form-field-empty" id="mat-form-field-label-1" for="mat-input-0" aria-owns="mat-input-0">
+                              <mat-label>E-mail</mat-label>
+                              <span aria-hidden="true" class="mat-placeholder-required mat-form-field-required-marker">&nbsp;*</span>
+                            </label>
+                        </span>
+                    </div>
+                    <div class="mat-form-field-suffix">
+                      <mat-icon class="mat-icon notranslate mat-primary material-icons" matsuffix="" role="img" aria-hidden="true">email</mat-icon>
+                    </div>
+                  </div>
+                </div>
+                <!---->
+                <div *ngIf="formRegister.controls['email'].invalid && (formRegister.controls['email'].dirty || formRegister.controls['email'].touched)" class="mat-form-field-subscript-wrapper">
+                    <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
+                      <mat-error class="mat-error ng-star-inserted" *ngIf="formRegister.controls['email'].errors.required">Email is required</mat-error>
+                      <mat-error class="mat-error ng-star-inserted" *ngIf="formRegister.controls['email'].errors.email">Email must be a valid email address</mat-error>
+                    </div>
+                </div>
+                <!---->
+              </mat-form-field>
+              <mat-form-field>
+                  <div class="mat-form-field-wrapper">
+                    <div class="mat-form-field-flex">
+                      <div class="mat-form-field-infix">
+                          <input matInput #password name="password" type="password" formControlName="password" maxlength="25" minlength="6" placeholder="Password">
+                          <span class="mat-form-field-label-wrapper">
+                              <label class="mat-form-field-label mat-empty mat-form-field-empty" id="mat-form-field-label-1" for="mat-input-0" aria-owns="mat-input-0">
+                                <mat-label>Password</mat-label>
+                                <span aria-hidden="true" class="mat-placeholder-required mat-form-field-required-marker">&nbsp;*</span>
+                              </label>
+                          </span>
+                      </div>
+                      <div class="mat-form-field-suffix">
+                        <mat-icon class="mat-icon notranslate mat-primary material-icons" matsuffix="" role="img" aria-hidden="true">lock</mat-icon>
+                      </div>
+                    </div>
+                  </div>
+                <!---->
+                <div *ngIf="formRegister.controls['password'].invalid && (formRegister.controls['password'].dirty || formRegister.controls['password'].touched)" class="mat-form-field-subscript-wrapper">
+                    <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
+                      <mat-error class="mat-error ng-star-inserted" *ngIf="formRegister.controls['password'].errors.required">Password is required</mat-error>
+                      <mat-error class="mat-error ng-star-inserted" *ngIf="formRegister.controls['password'].errors.minlength">Password must be at least 6 characters</mat-error>
+                    </div>
+                </div>
+                <!---->
+                </mat-form-field>
+                <mat-form-field>
+                  <div class="mat-form-field-wrapper">
+                    <div class="mat-form-field-flex">
+                      <div class="mat-form-field-infix">
+                          <input matInput #confirmPassword name="confirmPassword" type="password" formControlName="confirmPassword" maxlength="25" minlength="6" placeholder="Confirm Password">
+                          <span class="mat-form-field-label-wrapper">
+                              <label class="mat-form-field-label mat-empty mat-form-field-empty" id="mat-form-field-label-1" for="mat-input-0" aria-owns="mat-input-0">
+                                <mat-label>Confirm Password</mat-label>
+                                <span aria-hidden="true" class="mat-placeholder-required mat-form-field-required-marker">&nbsp;*</span>
+                              </label>
+                          </span>
+                      </div>
+                    </div>
+                  </div>
+                <!---->
+                <div *ngIf="formRegister.controls['confirmPassword'].invalid && (formRegister.controls['confirmPassword'].dirty || formRegister.controls['confirmPassword'].touched)" class="mat-form-field-subscript-wrapper">
+                    <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
+                      <mat-error class="mat-error ng-star-inserted" *ngIf="formRegister.controls['confirmPassword'].errors.required">Confirm Password is required</mat-error>
+                      <mat-error class="mat-error ng-star-inserted" *ngIf="formRegister.controls['confirmPassword'].errors.mustMatch">Passwords must match</mat-error>
+                    </div>
+                </div>
+                <!---->
+                </mat-form-field>
+                &nbsp;
+                <button class="space-top mat-raised-button mat-primary" mat-raised-button="" type="submit" [disabled]="formRegister.invalid">
+                  <span class="mat-button-wrapper"> Register </span>
+                  <div class="mat-button-ripple mat-ripple" matripple=""></div>
+                  <div class="mat-button-focus-overlay"></div>
+                </button>
+              </div>
+          </form>
+          <div fxlayoutalign="center" class="btn-areYouNew">
+            <button class="space-top mat-button mat-primary" mat-button="" (click)="onClick()">
+              <span class="mat-button-wrapper"> Do you have account? </span>
+            </button>
+          </div>
+      </mat-card-content>
+    </mat-card>
+</section>

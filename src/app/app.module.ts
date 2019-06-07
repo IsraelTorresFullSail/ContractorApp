@@ -25,6 +25,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 // import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 import { AppRoutingModule } from './app-routing.module';
+import { ReportsComponent } from './components/reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AppRoutingModule } from './app-routing.module';
     LoginComponent,
     RegisterComponent,
     MainMenuComponent,
-    HomeComponent
+    HomeComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserAnimationsModule,

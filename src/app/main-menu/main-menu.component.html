@@ -5,13 +5,13 @@
       [opened]="!(isHandset$ | async)">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item *ngIf="isLogged" href="#">Main</a>
-      <a mat-list-item *ngIf="isLogged" routerLink="/walkthroughs">Walkthroughs</a>
+      <a mat-list-item *ngIf="isLogged" routerLink="/home">Home</a>
+      <a mat-list-item *ngIf="isLogged" routerLink="/walkthrough">Walkthroughs</a>
       <a mat-list-item *ngIf="isLogged" routerLink="/punch">Punch List</a>
-      <a mat-list-item *ngIf="isLogged" href="#">Reports</a>
+      <a mat-list-item *ngIf="isLogged" routerLink="/reports">Reports</a>
       <a mat-list-item *ngIf="!isLogged" routerLink="register">Register</a>
       <a mat-list-item *ngIf="!isLogged" routerLink="login">Login</a>
-      <a mat-list-item *ngIf="isLogged" (click)="onLogout()">Logout</a>
+      <a mat-list-item *ngIf="isLogged" (click)="onLogout()" routerLink="login">Logout</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="fixed-top">

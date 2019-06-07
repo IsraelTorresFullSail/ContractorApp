@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
             displayName: this.inputUserName.nativeElement.value
           }).then( () => {
             console.log('USER UPDATED', user);
-            this.router.navigate(['walkthrough']);
+            this.router.navigate(['home']);
           }).catch( (error) => console.log('error', error));
         }
       });

@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   onLogin(): void {
     this.authService.loginEmailUser(this.loginForm.get('email').value, this.loginForm.get('password').value)
     .then( (res) => {
-      this.router.navigate(['walkthrough']);
+      this.router.navigate(['home']);
     }).catch( err => console.log('err', err.message));
   }
 
@@ -36,6 +36,6 @@ export class LoginComponent implements OnInit {
   }
 
   onClick() {
-    this.router.navigate(['register'])
+    this.router.navigate(['register']);
   }
 }

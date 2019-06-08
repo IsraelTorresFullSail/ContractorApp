@@ -13,9 +13,11 @@ table {
   margin: 50px auto 20px auto;
   padding: 20px;
   text-align: center;
-  background-color: #fff;
+  background-color: #040143;
+  color: #fff;
+  opacity: 0.95;
+  filter: alpha(opacity=95);
   border-radius: 4px;
-  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
 }
 
 .header-app h4 {

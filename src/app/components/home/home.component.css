@@ -14,9 +14,11 @@
   margin: 50px auto 20px auto;
   padding: 20px;
   text-align: center;
-  background-color: #fff;
+  background-color: #040143;
+  color: #fff;
+  opacity: 0.95;
+  filter: alpha(opacity=95);
   border-radius: 4px;
-  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
 }
 
 .header-app h4 {
@@ -29,12 +31,34 @@
 }
 
 mat-card {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  padding: 0px;
+  background-color: #040143;
+  color: #fff;
+  opacity: 0.95;
+  filter: alpha(opacity=95);
+}
+
+mat-card-header {
+  display: inline;
+  margin: auto;
+  text-align: center;
+}
+
+.mat-card-header .mat-card-title {
+  padding-top: 15px;
+  margin-bottom: 15px;
+}
+
+mat-card-content {
+  margin: 10px 10px 0px 10px;
+  margin-bottom: 0px;
+  text-align: justify;
 }
 
 .mat-card-image {
-  width: 50%;
-  margin:  auto 25%;
+  width: 100%;
+  margin: auto;
   text-align: center;
 }
 
@@ -43,7 +67,6 @@ mat-card-footer{
 }
 
 .btn-go {
-  margin: 20px;
-  background-color: #fff;
-  color: black;
+  margin: 30px;
+  background-color: #2A388E;
 }

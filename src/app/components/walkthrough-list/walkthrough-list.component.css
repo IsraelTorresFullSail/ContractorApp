@@ -12,9 +12,11 @@ table {
   margin: 50px auto 20px auto;
   padding: 20px;
   text-align: center;
-  background-color: #fff;
+  background-color: #040143;
+  color: #fff;
+  opacity: 0.95;
+  filter: alpha(opacity=95);
   border-radius: 4px;
-  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
 }
 
 .header-app h4 {
@@ -52,7 +54,7 @@ table {
   padding: 0.5rem;
   width: 100%;
   font-size: 1.2rem;
-  background-color: #4371E8;
+  background-color: #2A388E;
 }
 
 mat-card-title {
@@ -75,7 +77,7 @@ mat-card-title {
 
 .btn-accent {
   margin: 30px 0px;
-  background-color: #7F57FF;
+  background-color: #62a800;
 }
 
 .btn-warn {

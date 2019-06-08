@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
 
 
   loginForm = this.fb.group({
-    email: ['', Validators.required],
-    password: ['', Validators.required],
+    email: ['', Validators.required, Validators.email],
+    password: ['', Validators.required, Validators.minLength(6)],
   });
 
   ngOnInit() {
@@ -27,8 +27,11 @@ export class LoginComponent implements OnInit {
   onLogin(): void {
     this.authService.loginEmailUser(this.loginForm.get('email').value, this.loginForm.get('password').value)
     .then( (res) => {
-      this.router.navigate(['home']);
+    this.router.navigate(['home']);
     }).catch( err => console.log('err', err.message));
+    if (this.loginForm.invalid) {
+      return;
+    }
   }
 
   onLogout() {

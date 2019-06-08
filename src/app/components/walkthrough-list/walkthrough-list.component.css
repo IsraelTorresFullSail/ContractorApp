@@ -73,11 +73,17 @@ mat-card-title {
   width: 100%;
 }
 
-.btn-center {
+.btn-accent {
   margin: 30px 0px;
   background-color: #7F57FF;
 }
 
+.btn-warn {
+  background-color: #f44336;
+}
+
 .td-op-num {
-  width: 120px;
+  width: 150px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

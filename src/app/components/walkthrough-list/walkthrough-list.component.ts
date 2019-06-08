@@ -16,54 +16,57 @@ import { FormArray } from '@angular/forms';
 export class WalkthroughListComponent implements OnInit {
 
   taskItems: FormArray;
+  walkForm: FormGroup;
 
   constructor(private listService: ListServiceService, private router: Router, private fb: FormBuilder) { }
 
-    walkForm = this.fb.group ({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    permitNumber: ['', Validators.required],
-    address: ['', Validators.required],
-    city: ['', Validators.required],
-    state: ['', Validators.required],
-    postalCode: ['', Validators.required],
-    taskItems: this.fb.array([this.createItem()])
-    // aliases: this.fb.array([
-    //   this.fb.control('')
-    //   //{
-    //   // openingNumber: this.fb.control(''),
-    //   // taskDescription: this.fb.control(''),
-    //   // completed: this.fb.control(false)
-    //   //}
-    // ])
-    });
-
   ngOnInit() {
+      this.walkForm = this.fb.group ({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      permitNumber: ['', Validators.required],
+      address: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      postalCode: ['', Validators.required],
+      taskItems: this.fb.array([this.createItem()])
+      });
   }
 
   createItem(): FormGroup {
     return this.fb.group({
-      openingNumber: [''],
-      taskDescription: [''],
+      openingNumber: ['', Validators.required],
+      taskDescription: ['', Validators.required],
       completed: [false]
     });
   }
 
-  addTask(): void {
-    // this.taskItems = this.walkForm.controls.taskItems as FormArray;
-    this.taskItems = this.walkForm.get('taskItems') as FormArray;
-    this.taskItems.push(this.createItem());
+  // Giving a get method to the FormArray to use the controls property
+  get formtaskItems() {
+    return this.walkForm.get('taskItems') as FormArray;
+  }
+
+  addTask() {
+    this.formtaskItems.push(this.createItem());
+    // const control = <FormArray>this.walkForm.controls['taskItems'];
+    // control.push(this.createItem());
+    // if (this.walkForm.invalid) {
+    //   return;
+    // }
+  }
+
+  removeTask(i: number) {
+    this.formtaskItems.removeAt(i);
   }
 
   onSubmit() {
-    let data = this.walkForm.value;
+    const data = this.walkForm.value;
     // call service
     this.listService.createTask(data);
     this.walkForm.reset();
+    if (this.walkForm.invalid) {
+      return;
+    }
   }
-
-  // get aliases() {
-  //   return this.walkForm.get('aliases') as FormArray;
-  // }
 
 }

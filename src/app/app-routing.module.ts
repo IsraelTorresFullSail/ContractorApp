@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { WalkthroughListComponent } from './components/walkthrough-list/walkthrough-list.component';
 import { PunchListComponent } from './components/punch-list/punch-list.component';
 import { ReportsComponent } from './components/reports/reports.component';
+import { IncidentsComponent } from './components/incidents/incidents.component';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'walkthrough', component: WalkthroughListComponent },
   { path: 'punch', component: PunchListComponent },
+  { path: 'incidents', component: IncidentsComponent },
   { path: 'reports', component: ReportsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent }

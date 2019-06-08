@@ -4,11 +4,6 @@
   width: 100%;
 }
 
-.menu-grid {
-  margin: auto;
-  width: 80%;
-}
-
 .header-app {
   width: 80%;
   margin: 50px auto 20px auto;
@@ -26,24 +21,4 @@
   text-transform: none;
   line-height: 1.5rem;
   font-weight: 550;
-}
-
-mat-card {
-  margin-bottom: 20px;
-}
-
-.mat-card-image {
-  width: 50%;
-  margin:  auto 25%;
-  text-align: center;
-}
-
-mat-card-footer{
-  text-align: center;
-}
-
-.btn-go {
-  margin: 20px;
-  background-color: #fff;
-  color: black;
 }

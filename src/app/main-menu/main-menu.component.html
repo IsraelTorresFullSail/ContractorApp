@@ -8,6 +8,7 @@
       <a mat-list-item *ngIf="isLogged" routerLink="/home">Home</a>
       <a mat-list-item *ngIf="isLogged" routerLink="/walkthrough">Walkthroughs</a>
       <a mat-list-item *ngIf="isLogged" routerLink="/punch">Punch List</a>
+      <a mat-list-item *ngIf="isLogged" routerLink="/incidents">Incidents</a>
       <a mat-list-item *ngIf="isLogged" routerLink="/reports">Reports</a>
       <a mat-list-item *ngIf="!isLogged" routerLink="register">Register</a>
       <a mat-list-item *ngIf="!isLogged" routerLink="login">Login</a>
@@ -24,6 +25,11 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>{{app_name}}</span>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <img class="img-logo" src="./assets/img/logo.png">
+        </li>
+      </ul>
     </mat-toolbar>
     <!-- Add Content Here -->
     <ng-content></ng-content>

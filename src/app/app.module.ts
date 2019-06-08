@@ -26,6 +26,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ReportsComponent } from './components/reports/reports.component';
+import { IncidentsComponent } from './components/incidents/incidents.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ReportsComponent } from './components/reports/reports.component';
     RegisterComponent,
     MainMenuComponent,
     HomeComponent,
-    ReportsComponent
+    ReportsComponent,
+    IncidentsComponent
   ],
   imports: [
     BrowserAnimationsModule,

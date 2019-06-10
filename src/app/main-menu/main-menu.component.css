@@ -4,11 +4,13 @@
 
 .sidenav {
   width: 200px;
+  background-color: #2A388E;
+  color: #ffffff;
 }
 
-/* .mat-list-base .mat-list-item {
+.mat-list-base .mat-list-item {
   color: #ffffff;
-} */
+}
 
 .mat-toolbar.mat-primary {
   position: sticky;
@@ -29,4 +31,8 @@
 }
 .img-logo {
   width: 10%;
+}
+
+mat-icon {
+  margin-right: 5px;
 }

@@ -36,7 +36,7 @@ table {
 
 .form {
   margin-top: 20px;
-  padding: 40px;
+  padding: 30px 40px 20px 40px;
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
@@ -44,6 +44,8 @@ table {
 
 .mat-form-field {
   width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .mat-icon {
@@ -53,8 +55,12 @@ table {
 .btn-submit {
   padding: 0.5rem;
   width: 100%;
-  font-size: 1.2rem;
+  font-size: 1rem;
   background-color: #2A388E;
+}
+
+mat-card-actions {
+  margin-bottom: 0px;
 }
 
 mat-card-title {
@@ -86,6 +92,4 @@ mat-card-title {
 
 .td-op-num {
   width: 150px;
-  margin-top: 20px;
-  margin-bottom: 20px;
 }

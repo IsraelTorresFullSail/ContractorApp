@@ -15,7 +15,7 @@ import { FormArray } from '@angular/forms';
 })
 export class WalkthroughListComponent implements OnInit {
 
-  taskItems: FormArray;
+  // taskItems: FormArray;
   walkForm: FormGroup;
 
   constructor(private listService: ListServiceService, private router: Router, private fb: FormBuilder) { }
@@ -24,7 +24,7 @@ export class WalkthroughListComponent implements OnInit {
       this.walkForm = this.fb.group ({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      permitNumber: ['', Validators.required],
+      permitNumber: ['', [Validators.required, Validators.pattern('^[0-9.,]+$')]],
       address: ['', Validators.required],
       city: ['', Validators.required],
       state: ['', Validators.required],
@@ -41,32 +41,26 @@ export class WalkthroughListComponent implements OnInit {
     });
   }
 
-  // Giving a get method to the FormArray to use the controls property
-  get formtaskItems() {
-    return this.walkForm.get('taskItems') as FormArray;
-  }
-
-  addTask() {
-    this.formtaskItems.push(this.createItem());
-    // const control = <FormArray>this.walkForm.controls['taskItems'];
-    // control.push(this.createItem());
-    // if (this.walkForm.invalid) {
-    //   return;
-    // }
-  }
-
-  removeTask(i: number) {
-    this.formtaskItems.removeAt(i);
-  }
-
   onSubmit() {
     const data = this.walkForm.value;
     // call service
-    this.listService.createTask(data);
-    this.walkForm.reset();
-    if (this.walkForm.invalid) {
-      return;
+    if (this.walkForm.valid) {
+      this.listService.createTask(data);
+      this.walkForm.clearValidators();
+      this.walkForm.reset();
+
     }
   }
+
+  addTask() {
+    const control = <FormArray>this.walkForm.controls['taskItems'];
+    control.push(this.createItem());
+  }
+
+  removeTask(i: number) {
+    const control = <FormArray>this.walkForm.controls['taskItems'];
+    control.removeAt(i);
+  }
+
 
 }

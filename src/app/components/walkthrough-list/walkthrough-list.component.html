@@ -3,8 +3,8 @@
       <h4>Walkthrough Form</h4>
   </div>
   <div class="walk-form">
-    <form [formGroup]="this.walkForm" (ngSubmit)="onSubmit()">
-      <div class="form">
+    <mat-card class="form">
+    <form [formGroup]="walkForm" novalidate (ngSubmit)="onSubmit()">
       <h4>Customer Information</h4>
       <div class="row">
         <div class="col-md-6">
@@ -140,6 +140,7 @@
                   <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
                     <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['postalCode'].errors.required">Postal Code is required</mat-error>
                     <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['postalCode'].errors.minlength">Postal Code must be 5 characters</mat-error>
+                    <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['postalCode'].errors.pattern">You can type only numbers 0-9</mat-error>
                   </div>
               </div>
               <!---->
@@ -172,13 +173,14 @@
           </mat-form-field>
         </div>
       </div>
-      </div>
-      <mat-card class="card-task">
+      <mat-card class="card-task" formArrayName="taskItems">
           <mat-card-title>
             <h4>Tasks List</h4>
           </mat-card-title>
-          <mat-card-content formArrayName="taskItems">
-              <div class="task-desc" cellspacing="0" *ngFor="let taskItem of formtaskItems.controls; let i=index;">
+          <mat-card-content>
+              <div class="task-desc" cellspacing="0" *ngFor="let taskItem of walkForm.controls.taskItems.controls; let i=index">
+                <!-- row divider show for every nex row exclude if first row -->
+                <mat-divider *ngIf="walkForm.controls.taskItems.controls.length > 1 && i > 0" ></mat-divider><br>
                 <div [formGroupName]="i">
                     <mat-form-field class="td-op-num">
                       <input matInput #openingNumber type="number" maxlength="3" placeholder="Opening Number" formControlName="openingNumber">
@@ -193,9 +195,9 @@
                           </label>
                       </span>
                       <!---->
-                      <div *ngIf="formtaskItems.controls[i].controls.openingNumber.invalid && (formtaskItems.controls[i].controls.openingNumber.dirty || formtaskItems.controls[i].controls.openingNumber.touched)" class="mat-form-field-subscript-wrapper">
+                      <div *ngIf="taskItem.controls.openingNumber.invalid && (taskItem.controls.openingNumber.dirty || taskItem.controls.openingNumber.touched)" class="mat-form-field-subscript-wrapper">
                           <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
-                            <mat-error class="mat-error ng-star-inserted" *ngIf="formtaskItems.controls[i].controls.openingNumber.errors.required">Opening Number is required</mat-error>
+                            <mat-error class="mat-error ng-star-inserted" *ngIf="taskItem.controls.openingNumber.errors.required">Opening Number is required</mat-error>
                           </div>
                       </div>
                       <!---->
@@ -215,36 +217,40 @@
                                   </label>
                               </span>
                               <!---->
-                              <div *ngIf="formtaskItems.controls[i].controls.taskDescription.invalid && (formtaskItems.controls[i].controls.taskDescription.dirty || formtaskItems.controls[i].controls.taskDescription.touched)" class="mat-form-field-subscript-wrapper">
+                              <div *ngIf="taskItem.controls.taskDescription.invalid && (taskItem.controls.taskDescription.dirty || taskItem.controls.taskDescription.touched)" class="mat-form-field-subscript-wrapper">
                                   <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
-                                    <mat-error class="mat-error ng-star-inserted" *ngIf="formtaskItems.controls[i].controls.taskDescription.errors.required">Task Description is required</mat-error>
+                                    <mat-error class="mat-error ng-star-inserted" *ngIf="taskItem.controls.taskDescription.errors.required">Task Description is required</mat-error>
                                   </div>
                               </div>
                               <!---->
                           </mat-form-field>
                       </div>
                       <div class="col-md-2">
-                        <button class="btn-warn" mat-fab color="warn" *ngIf="formtaskItems.controls.length > 1" (click)="removeTask(i)">
+                        <button type="button" class="btn-warn" mat-fab color="warn" *ngIf="walkForm.controls.taskItems.controls.length > 1" (click)="removeTask(i)">
                           <mat-icon>delete</mat-icon>
                         </button>
                       </div>
                     </div>
                 </div>
             </div>
-            <button class="btn-accent" mat-raised-button color="accent" (click)="addTask()">
+            <mat-card-actions>
+            <button type="button" class="btn-accent" mat-raised-button color="accent" (click)="addTask()">
               <mat-icon>add</mat-icon>
               Add Task
             </button>
+          </mat-card-actions>
+
           </mat-card-content>
       </mat-card>
-      <table cellspacing="0">
-          <tr>
-              <td>
-                <button mat-raised-button color="primary" class="btn-submit">Submit</button>
-              </td>
-            </tr>
-      </table>
+      <div class="row">
+          <div class="col-md-12">
+            <mat-card-actions>
+            <button type="submit" mat-raised-button color="primary" class="btn-submit" [disabled]="walkForm.invalid">Submit</button>
+            </mat-card-actions>
+          </div>
+        </div>
     </form>
+    </mat-card>
   </div>
 </div>
 

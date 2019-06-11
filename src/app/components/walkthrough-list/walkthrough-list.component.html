@@ -4,7 +4,7 @@
   </div>
   <div class="walk-form">
     <mat-card class="form">
-    <form [formGroup]="walkForm" novalidate (ngSubmit)="onSubmit()">
+    <form [formGroup]="walkForm" novalidate (ngSubmit)="onSubmit()" #f="ngForm">
       <h4>Customer Information</h4>
       <div class="row">
         <div class="col-md-6">
@@ -23,7 +23,7 @@
                 <!---->
                 <div *ngIf="walkForm.controls['firstName'].invalid && (walkForm.controls['firstName'].dirty || walkForm.controls['firstName'].touched)" class="mat-form-field-subscript-wrapper">
                     <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
-                      <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['firstName'].errors.required">First Name is required</mat-error>
+                      <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['firstName'].errors?.required">First Name is required</mat-error>
                     </div>
                 </div>
                 <!---->
@@ -45,7 +45,7 @@
                 <!---->
                 <div *ngIf="walkForm.controls['lastName'].invalid && (walkForm.controls['lastName'].dirty || walkForm.controls['lastName'].touched)" class="mat-form-field-subscript-wrapper">
                     <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
-                      <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['lastName'].errors.required">Last Name is required</mat-error>
+                      <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['lastName'].errors?.required">Last Name is required</mat-error>
                     </div>
                 </div>
                 <!---->
@@ -69,7 +69,7 @@
                 <!---->
                 <div *ngIf="walkForm.controls['address'].invalid && (walkForm.controls['address'].dirty || walkForm.controls['address'].touched)" class="mat-form-field-subscript-wrapper">
                     <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
-                      <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['address'].errors.required">Address is required</mat-error>
+                      <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['address'].errors?.required">Address is required</mat-error>
                     </div>
                 </div>
                 <!---->
@@ -93,7 +93,7 @@
               <!---->
               <div *ngIf="walkForm.controls['address'].invalid && (walkForm.controls['city'].dirty || walkForm.controls['city'].touched)" class="mat-form-field-subscript-wrapper">
                   <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
-                    <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['city'].errors.required">City is required</mat-error>
+                    <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['city'].errors?.required">City is required</mat-error>
                   </div>
               </div>
               <!---->
@@ -115,7 +115,7 @@
               <!---->
               <div *ngIf="walkForm.controls['state'].invalid && (walkForm.controls['state'].dirty || walkForm.controls['state'].touched)" class="mat-form-field-subscript-wrapper">
                   <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
-                    <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['state'].errors.required">State is required</mat-error>
+                    <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['state'].errors?.required">State is required</mat-error>
                   </div>
               </div>
               <!---->
@@ -138,9 +138,9 @@
               <!---->
               <div *ngIf="walkForm.controls['postalCode'].invalid && (walkForm.controls['postalCode'].dirty || walkForm.controls['postalCode'].touched)" class="mat-form-field-subscript-wrapper">
                   <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
-                    <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['postalCode'].errors.required">Postal Code is required</mat-error>
-                    <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['postalCode'].errors.minlength">Postal Code must be 5 characters</mat-error>
-                    <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['postalCode'].errors.pattern">You can type only numbers 0-9</mat-error>
+                    <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['postalCode'].errors?.required">Postal Code is required</mat-error>
+                    <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['postalCode'].errors?.minlength">Postal Code must be 5 characters</mat-error>
+                    <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['postalCode'].errors?.pattern">You can type only numbers 0-9</mat-error>
                   </div>
               </div>
               <!---->
@@ -165,8 +165,8 @@
               <!---->
               <div *ngIf="walkForm.controls['permitNumber'].invalid && (walkForm.controls['permitNumber'].dirty || walkForm.controls['permitNumber'].touched)" class="mat-form-field-subscript-wrapper">
                   <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
-                    <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['permitNumber'].errors.required">Permit Number is required</mat-error>
-                    <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['permitNumber'].errors.minlength">Permit Number mustbe 10 characters</mat-error>
+                    <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['permitNumber'].errors?.required">Permit Number is required</mat-error>
+                    <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['permitNumber'].errors?.minlength">Permit Number mustbe 10 characters</mat-error>
                   </div>
               </div>
               <!---->
@@ -197,7 +197,7 @@
                       <!---->
                       <div *ngIf="taskItem.controls.openingNumber.invalid && (taskItem.controls.openingNumber.dirty || taskItem.controls.openingNumber.touched)" class="mat-form-field-subscript-wrapper">
                           <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
-                            <mat-error class="mat-error ng-star-inserted" *ngIf="taskItem.controls.openingNumber.errors.required">Opening Number is required</mat-error>
+                            <mat-error class="mat-error ng-star-inserted" *ngIf="taskItem.controls.openingNumber.errors?.required">Opening Number is required</mat-error>
                           </div>
                       </div>
                       <!---->
@@ -219,7 +219,7 @@
                               <!---->
                               <div *ngIf="taskItem.controls.taskDescription.invalid && (taskItem.controls.taskDescription.dirty || taskItem.controls.taskDescription.touched)" class="mat-form-field-subscript-wrapper">
                                   <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
-                                    <mat-error class="mat-error ng-star-inserted" *ngIf="taskItem.controls.taskDescription.errors.required">Task Description is required</mat-error>
+                                    <mat-error class="mat-error ng-star-inserted" *ngIf="taskItem.controls.taskDescription.errors?.required">Task Description is required</mat-error>
                                   </div>
                               </div>
                               <!---->
@@ -238,8 +238,7 @@
               <mat-icon>add</mat-icon>
               Add Task
             </button>
-          </mat-card-actions>
-
+            </mat-card-actions>
           </mat-card-content>
       </mat-card>
       <div class="row">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ListServiceService } from './../../services/list-service.service';
 
@@ -15,7 +15,7 @@ import { FormArray } from '@angular/forms';
 })
 export class WalkthroughListComponent implements OnInit {
 
-  // taskItems: FormArray;
+  @ViewChild('f') myNgForm;
   walkForm: FormGroup;
 
   constructor(private listService: ListServiceService, private router: Router, private fb: FormBuilder) { }
@@ -46,9 +46,13 @@ export class WalkthroughListComponent implements OnInit {
     // call service
     if (this.walkForm.valid) {
       this.listService.createTask(data);
-      this.walkForm.clearValidators();
-      this.walkForm.reset();
 
+      // Reset the form
+      this.myNgForm.resetForm();
+
+      // Clear the FormArray and set it as default
+      const array = <FormArray>this.walkForm.controls['taskItems'];
+      array.controls = [this.createItem()];
     }
   }
 

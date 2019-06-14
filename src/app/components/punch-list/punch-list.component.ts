@@ -30,6 +30,10 @@ export class PunchListComponent implements OnInit {
 
   isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');
 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   ngOnInit() {
     this.getAllTasks();
   }

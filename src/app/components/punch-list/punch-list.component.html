@@ -2,53 +2,69 @@
   <div class="header-app">
       <h4>Punch List</h4>
   </div>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
     <div class="table-continer mat-elevation-z8">
-        <!-- <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8"> -->
-        <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
-  <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
-    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
-  </ng-container>
+      <!-- <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8"> -->
+      <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows class="mat-elevation-z8">
+        <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
+          <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+          <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+        </ng-container>
 
-  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-  <ng-container matColumnDef="expandedDetail">
-    <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-      <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-        <table class="mat-elevation-z8">
-            <th>Opening No.</th>
-            <th>Task Description</th>
-            <th>Status</th>
-          <tr *ngFor="let item of element.taskItems">
-            <td>
-                {{item.openingNumber}}
-            </td>
-            <td>
-                {{item.taskDescription}}
-            </td>
-            <td>
-                <mat-icon (click)="onChangeStatus(element)">edit</mat-icon>
-                &nbsp;
-                <mat-icon (click)="onDelete(element.id)">delete</mat-icon>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </td>
-  </ng-container>
+        <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+        <ng-container matColumnDef="expandedDetail">
+          <td mat-cell class="td-nested-table" *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+            <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+              <table class="mat-elevation-z8 mat-table">
+                <thead role="rowgroup">
+                  <tr class="mat-header-row">
+                      <th class="mat-header-cell">Opening</th>
+                      <th class="mat-header-cell">Task Description</th>
+                      <th class="mat-header-cell">Status</th>
+                  </tr>
+                </thead>
+                <tbody role="rowgroup">
+                    <tr class="element-row mat-row" role="row" *ngFor="let item of element.taskItems">
+                        <td class="mat-cell" role="gridcell">
+                            {{item.openingNumber}}
+                        </td>
+                        <td class="mat-cell" role="gridcell">
+                            {{item.taskDescription}}
+                        </td>
+                        <td class="mat-cell" role="gridcell">
+                            <mat-icon (click)="onChangeStatus(element)">edit</mat-icon>
+                            &nbsp;
+                            <mat-icon (click)="onDelete(element.id)">delete</mat-icon>
+                        </td>
+                      </tr>
+                </tbody>
+                <tfoot role="rowgroup" class="mat-table-sticky" style="display: none; bottom: 0px; position: sticky; z-index: 10;"></tfoot>
+                <!-- <mat-paginator #paginator
+                    [length]="dataSource?.data?.length"
+                    [pageIndex]="0"
+                    [pageSize]="25"
+                    [pageSizeOptions]="[25, 50, 100, 250]">
+                  </mat-paginator> -->
+              </table>
+            </div>
+          </td>
+        </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let element; columns: displayedColumns;"
-      class="example-element-row"
-      [class.example-expanded-row]="expandedElement === element"
-      (click)="expandedElement = expandedElement === element ? null : element">
-  </tr>
-  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-</table>
-          <mat-paginator #paginator
-            [length]="dataSource?.data?.length"
-            [pageIndex]="0"
-            [pageSize]="25"
-            [pageSizeOptions]="[25, 50, 100, 250]">
-          </mat-paginator>
-      </div>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+            class="example-element-row"
+            [class.example-expanded-row]="expandedElement === element"
+            (click)="expandedElement = expandedElement === element ? null : element">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+      </table>
+      <mat-paginator #paginator
+        [length]="dataSource?.data.length"
+        [pageIndex]="0"
+        [pageSize]="25"
+        [pageSizeOptions]="[25, 50, 100, 250]">
+      </mat-paginator>
+    </div>
 </div>

@@ -25,7 +25,7 @@ export class PunchListComponent implements OnInit {
 
   dataSource = new MatTableDataSource();
 
-  displayedColumns: string[] = ['firstName', 'lastName'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'actions'];
   expandedElement = new MatTableDataSource();
 
   isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');

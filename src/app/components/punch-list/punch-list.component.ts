@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material';
+import { MatSort, MatTableDataSource, MatPaginator, MatDialog, MatDialogConfig } from '@angular/material';
 import { ListServiceService } from './../../services/list-service.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { WalkthroughListComponent } from './../walkthrough-list/walkthrough-list.component';
 
 @Component({
   selector: 'app-punch-list',
@@ -18,7 +19,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 })
 export class PunchListComponent implements OnInit {
 
-  constructor(private listService: ListServiceService, private router: Router) {}
+  constructor(private listService: ListServiceService, private router: Router, private dialog: MatDialog) {}
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -40,6 +41,7 @@ export class PunchListComponent implements OnInit {
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   getAllTasks() {
@@ -54,7 +56,24 @@ export class PunchListComponent implements OnInit {
 
   onChangeStatus(task: any) {
     task.completed = true;
-    this.listService.updateTask(task);
+    console.log(task);
+    this.listService.updateTaskItem(task);
+  }
+
+  onEdit(task) {
+    this.openModal();
+    if (task) {
+      this.listService.updateTask(task);
+    }
+  }
+
+  openModal(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      title: 'Modal'
+    };
+    dialogConfig.autoFocus = true;
+    this.dialog.open(WalkthroughListComponent, dialogConfig);
   }
 
 }

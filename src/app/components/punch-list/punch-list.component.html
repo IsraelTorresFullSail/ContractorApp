@@ -13,19 +13,23 @@
         <!-- firstName Column -->
         <ng-container matColumnDef="firstName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+            <td mat-cell *matCellDef="let element"><strong> {{element.firstName}} </strong></td>
           </ng-container>
 
           <!-- lastName Column -->
           <ng-container matColumnDef="lastName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+            <td mat-cell *matCellDef="let element"><strong> {{element.lastName}} </strong></td>
           </ng-container>
 
           <!-- actions Column -->
           <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
-            <td mat-cell *matCellDef="let element"> <mat-icon (click)="onDelete(element.id)">delete</mat-icon> </td>
+            <td mat-cell *matCellDef="let element">
+              <mat-icon class="mat-icon-blue" (click)=onEdit(element)>edit</mat-icon>
+              &nbsp;
+              <mat-icon class="mat-icon-red" (click)="onDelete(element.id)">delete</mat-icon>
+            </td>
           </ng-container>
 
         <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
@@ -49,7 +53,7 @@
                             {{item.taskDescription}}
                         </td>
                         <td class="mat-cell" role="gridcell">
-                            <mat-icon (click)="onChangeStatus(element)">edit</mat-icon>
+                            <mat-icon (click)="onChangeStatus(item)" [style.color]="item.completed ? 'green' : 'red'">done</mat-icon>
                         </td>
                       </tr>
                 </tbody>
@@ -70,8 +74,8 @@
       <mat-paginator #paginator
         [length]="dataSource?.data.length"
         [pageIndex]="0"
-        [pageSize]="25"
-        [pageSizeOptions]="[25, 50, 100, 250]">
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 20, 50, 100]">
       </mat-paginator>
     </div>
 </div>

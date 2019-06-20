@@ -100,3 +100,15 @@ mat-form-field {
   margin-bottom: 10px;
 }
 
+.mat-icon-red {
+  color: #ff0000;
+}
+
+.mat-icon-blue {
+  color: #2A388E;
+}
+
+.mat-icon-green.active {
+  color: #94f110;
+}
+

@@ -27,6 +27,9 @@ export class ListServiceService {
   updateTask(task: any) {
     return this.taskCollection.doc(task.id).update(task);
   }
+  updateTaskItem(task: any) {
+    return this.taskCollection.doc(task.id).update({'taskItems.completed': task});
+  }
   deleteTask(id: string) {
     return this.taskCollection.doc(id).delete();
   }

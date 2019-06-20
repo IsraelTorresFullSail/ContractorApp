@@ -24,7 +24,7 @@ export class WalkthroughListComponent implements OnInit {
       this.walkForm = this.fb.group ({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      permitNumber: ['', [Validators.required, Validators.pattern('^[0-9.,]+$')]],
+      permitNumber: ['', Validators.required],
       address: ['', Validators.required],
       city: ['', Validators.required],
       state: ['', Validators.required],

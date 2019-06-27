@@ -123,7 +123,7 @@
         </div>
         <div class="col-md-4">
           <mat-form-field>
-              <input matInput #postalCode type="number" minlength="5" maxlength="5" placeholder="Postal Code" formControlName="postalCode">
+              <input matInput #postalCode type="text" limit-to="5" minlength="5" maxlength="5" placeholder="Postal Code" formControlName="postalCode">
               <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
               <span class="mat-form-field-label-wrapper">
                   <label class="mat-form-field-label  mat-empty mat-form-field-empty" id="mat-form-field-label-1" for="mat-input-0" aria-owns="mat-input-0">
@@ -139,6 +139,7 @@
               <div *ngIf="walkForm.controls['postalCode'].invalid && (walkForm.controls['postalCode'].dirty || walkForm.controls['postalCode'].touched)" class="mat-form-field-subscript-wrapper">
                   <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
                     <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['postalCode'].errors?.required">Postal Code is required</mat-error>
+                    <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['postalCode'].errors?.pattern">You can type only numbers [0-9]</mat-error>
                     <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['postalCode'].errors?.minlength">Postal Code must be 5 characters</mat-error>
                   </div>
               </div>
@@ -149,7 +150,7 @@
       <div class="row">
         <div class="col-md-4">
           <mat-form-field>
-              <input matInput #permitNumber type="number" minlength="10" maxlength="10" placeholder="Permit Number" formControlName="permitNumber">
+              <input matInput #permitNumber type="text" minlength="10" maxlength="10" placeholder="Permit Number" formControlName="permitNumber">
               <mat-hint align="end">{{permitNumber.value.length}} / 10</mat-hint>
               <span class="mat-form-field-label-wrapper">
                   <label class="mat-form-field-label  mat-empty mat-form-field-empty" id="mat-form-field-label-1" for="mat-input-0" aria-owns="mat-input-0">
@@ -165,6 +166,7 @@
               <div *ngIf="walkForm.controls['permitNumber'].invalid && (walkForm.controls['permitNumber'].dirty || walkForm.controls['permitNumber'].touched)" class="mat-form-field-subscript-wrapper">
                   <div class="ng-tns-c15-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="line-height: 4.5;">
                     <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['permitNumber'].errors?.required">Permit Number is required</mat-error>
+                    <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['permitNumber'].errors?.pattern">You can type only numbers [0-9]</mat-error>
                     <mat-error class="mat-error ng-star-inserted" *ngIf="walkForm.controls['permitNumber'].errors?.minlength">Permit Number mustbe 10 characters</mat-error>
                   </div>
               </div>

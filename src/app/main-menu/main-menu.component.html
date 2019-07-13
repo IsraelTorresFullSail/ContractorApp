@@ -6,9 +6,18 @@
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item *ngIf="isLogged" routerLink="/home"><mat-icon>home</mat-icon> Home</a>
-      <a mat-list-item *ngIf="isLogged" routerLink="/walkthrough"><mat-icon>directions_walk</mat-icon> Walkthroughs</a>
-      <a mat-list-item *ngIf="isLogged" routerLink="/punch"><mat-icon>list</mat-icon> Punch List</a>
-      <a mat-list-item *ngIf="isLogged" routerLink="/incidents"><mat-icon>flag</mat-icon> Incidents</a>
+      <a mat-list-item *ngIf="isLogged" routerLink="/walkthrough"><mat-icon>texture</mat-icon> Materials</a>
+      <a mat-list-item *ngIf="isLogged" routerLink="/walkthrough"><mat-icon>build</mat-icon> Labor</a>
+      <a mat-list-item *ngIf="isLogged" routerLink="/walkthrough"><mat-icon>event</mat-icon> Scheduling</a>
+      <a mat-list-item *ngIf="isLogged" routerLink="/walkthrough"><mat-icon>supervisor_account</mat-icon> Sub-contractors</a>
+      <a mat-list-item *ngIf="isLogged" routerLink="/walkthrough"><mat-icon>local_shipping</mat-icon> Deliveries</a>
+      <a mat-list-item *ngIf="isLogged" routerLink="/walkthrough"><mat-icon>contacts</mat-icon> Clients</a>
+      <a mat-list-item *ngIf="isLogged" [matMenuTriggerFor]="installation"><mat-icon>domain</mat-icon> Installation</a>
+      <mat-menu #installation="matMenu" class="mat-nav-list mat-list-base mat-list-item">
+        <a mat-list-item *ngIf="isLogged" routerLink="/walkthrough"><mat-icon>directions_walk</mat-icon> Walkthroughs</a>
+        <a mat-list-item *ngIf="isLogged" routerLink="/punch"><mat-icon>list</mat-icon> Punch List</a>
+        <a mat-list-item *ngIf="isLogged" routerLink="/incidents"><mat-icon>report_problem</mat-icon> Incidents</a>
+      </mat-menu>
       <a mat-list-item *ngIf="isLogged" routerLink="/reports"><mat-icon>bar_chart</mat-icon> Reports</a>
       <a mat-list-item *ngIf="!isLogged" routerLink="register"><mat-icon>person_add</mat-icon> Register</a>
       <a mat-list-item *ngIf="!isLogged" routerLink="login"><mat-icon>person</mat-icon> Login</a>

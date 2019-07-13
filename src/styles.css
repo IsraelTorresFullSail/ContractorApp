@@ -11,6 +11,16 @@ html, body {
   margin-top: 20px !important;
 }
 
+.mat-menu-panel {
+  margin-left: 200px !important;
+  margin-top: -50px !important;
+  background: #2A388E !important;
+}
+
+.mat-menu-panel a {
+  color: #ffffff !important;
+}
+
 /* Coolors Exported Palette */
 /* Color Theme Swatches in Hex */
 .Copy-of-night-1851685-1-hex { color: #040143; }

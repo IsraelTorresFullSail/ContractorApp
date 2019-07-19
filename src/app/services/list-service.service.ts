@@ -27,13 +27,8 @@ export class ListServiceService {
   updateTask(task: any) {
     return this.taskCollection.doc(task.id).update(task);
   }
-  // updateTaskItem(task: any) {
-  //   return this.taskCollection.doc(task.id).update({
-  //     'taskItems': task
-  //   });
-  // }
   updateTaskItem(task: any) {
-    return this.taskCollection.doc(task.id).update({'taskItems.0': task}); // TODO: Update an specific index value of this array
+    return this.taskCollection.doc(task.id).update({'taskItems': task}); // TODO: Update an specific index value of this array
   }
   deleteTask(id: string) {
     return this.taskCollection.doc(id).delete();

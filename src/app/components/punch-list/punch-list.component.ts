@@ -19,8 +19,6 @@ import { WalkthroughListComponent } from './../walkthrough-list/walkthrough-list
 })
 export class PunchListComponent implements OnInit {
 
-  taskId = 0;
-
   constructor(private listService: ListServiceService, private router: Router, private dialog: MatDialog) {}
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -56,14 +54,8 @@ export class PunchListComponent implements OnInit {
     this.listService.deleteTask(id);
   }
 
-  // onChangeStatus(task: any) {
-  //   task.completed = true;
-  //   console.log(task);
-  //   this.listService.updateTaskItem(task);
-  // }
   onChangeStatus(task: any) {
     task.completed = true;
-    // task.id = 'oYAGnYzg4DEaSJzHka32'; // TODO: Get this id actumatic
     console.log(task);
     this.listService.updateTaskItem(task);
   }

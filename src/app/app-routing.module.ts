@@ -7,17 +7,19 @@ import { WalkthroughListComponent } from './components/walkthrough-list/walkthro
 import { PunchListComponent } from './components/punch-list/punch-list.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { IncidentsComponent } from './components/incidents/incidents.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'walkthrough', component: WalkthroughListComponent },
-  { path: 'punch', component: PunchListComponent },
-  { path: 'incidents', component: IncidentsComponent },
-  { path: 'reports', component: ReportsComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'walkthrough', component: WalkthroughListComponent, canActivate: [AuthGuard] },
+  { path: 'punch', component: PunchListComponent, canActivate: [AuthGuard] },
+  { path: 'incidents', component: IncidentsComponent, canActivate: [AuthGuard] },
+  { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: '**', component: NotfoundComponent}
 ];
 
 @NgModule({
